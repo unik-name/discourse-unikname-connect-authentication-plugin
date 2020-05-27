@@ -1,5 +1,5 @@
-# discourse-openid-connect
+# discourse-unikname-connect
 
-A plugin to integrate Discourse with an openid-connect login provider
+A plugin to integrate [Discourse](https://www.discourse.org/) with [Unikname Connect](https://unikname.com).
 
-For information and discussion, see https://meta.discourse.org/t/openid-connect-authentication-plugin/103632
+For information and discussion, see https://docs.unik-name.com/integration/connect/apps/discourse/.
