@@ -28,28 +28,28 @@
     <div class="create-account-steps">
       <div class="create-account-step" id="presentationStep">
         <h2>
-          {{i18n "login.oidc.create_account.steps.presentation.title"}}
+          {{i18n "login.unikname.create_account.steps.presentation.title"}}
         </h2>
         <div class="create-account-step-icon">
           {{d-icon 'power-off'}}
         </div>
         <p>
-          {{i18n "login.oidc.create_account.steps.presentation.description1"}}
+          {{i18n "login.unikname.create_account.steps.presentation.description1"}}
         </p>
         <p>
-          {{i18n "login.oidc.create_account.steps.presentation.description2"}}
+          {{i18n "login.unikname.create_account.steps.presentation.description2"}}
         </p>
       </div>
 
       <div class="create-account-step" id="accountUsernameStep">
         <h2>
-          {{i18n "login.oidc.create_account.steps.username.title"}}
+          {{i18n "login.unikname.create_account.steps.username.title"}}
         </h2>
         <div class="create-account-step-icon">
           {{d-icon 'id-badge'}}
         </div>
         <p>
-          {{i18n "login.oidc.create_account.steps.username.description"}}
+          {{i18n "login.unikname.create_account.steps.username.description"}}
         </p>
         <div class="input-section">
           <label for="new-account-username">{{i18n "user.username.title"}}</label>
@@ -69,13 +69,13 @@
       {{#if fullnameRequired}}
       <div class="create-account-step" id="accountFullNameStep">
         <h2>
-          {{i18n "login.oidc.create_account.steps.fullname.title"}}
+          {{i18n "login.unikname.create_account.steps.fullname.title"}}
         </h2>
         <div class="create-account-step-icon">
           {{d-icon 'id-badge'}}
         </div>
         <p>
-          {{i18n "login.oidc.create_account.steps.fullname.description"}}
+          {{i18n "login.unikname.create_account.steps.fullname.description"}}
         </p>
         <div class="input-section">
           <label for="new-account-name">{{i18n "user.name.title"}}</label>
@@ -95,13 +95,13 @@
 
       <div class="create-account-step" id="accountEmailStep">
         <h2>
-          {{i18n "login.oidc.create_account.steps.email.title"}}
+          {{i18n "login.unikname.create_account.steps.email.title"}}
         </h2>
         <div class="create-account-step-icon">
           {{d-icon 'envelope'}}
         </div>
         <p>
-          {{i18n "login.oidc.create_account.steps.email.description"}}
+          {{i18n "login.unikname.create_account.steps.email.description"}}
         </p>
         <div class="input-section">
           <label for="new-account-email">{{i18n "user.email.title"}}</label>
@@ -119,7 +119,7 @@
           {{!-- {{#if showBypassEmail}}
           <div class="bypassEmail">
             {{input type="checkbox" checked=bypassEmail}}
-            {{i18n "login.oidc.create_account.steps.email.bypass_email.label"}}
+            {{i18n "login.unikname.create_account.steps.email.bypass_email.label"}}
           </div>
           {{/if}} --}}
         </div>
@@ -129,13 +129,13 @@
       <div class="create-account-step" id="accountPasswordStep">
         <h2>
 
-          {{i18n "login.oidc.create_account.steps.password.title"}}
+          {{i18n "login.unikname.create_account.steps.password.title"}}
         </h2>
         <div class="create-account-step-icon">
           {{d-icon 'key'}}
         </div>
         <p>
-          {{i18n "login.oidc.create_account.steps.password.description"}}
+          {{i18n "login.unikname.create_account.steps.password.description"}}
         </p>
 
         {{plugin-outlet
@@ -186,13 +186,13 @@
       {{#if requireInviteCode}}
       <div class="create-account-step" id="accountInvitationCodeCodeStep">
         <h2>
-          {{i18n "login.oidc.create_account.steps.invitation_code.title"}}
+          {{i18n "login.unikname.create_account.steps.invitation_code.title"}}
         </h2>
         <div class="create-account-step-icon">
           {{d-icon 'gift'}}
         </div>
         <p>
-          {{i18n "login.oidc.create_account.steps.invitation_code.description"}}
+          {{i18n "login.unikname.create_account.steps.invitation_code.description"}}
         </p>
         <div class="input-section">
           <label for="invite-code">{{i18n "user.invite_code.title"}}</label>
@@ -217,7 +217,7 @@
 {{#unless hasAuthOptions}}
 <div class="login-link-container">
   {{#d-button class="btn-large" id="login-link" action=(route-action "showLogin") disabled=formSubmitted}}
-  {{i18n "login.oidc.create_account.login_link"}}&nbsp;{{i18n "log_in"}}
+  {{i18n "login.unikname.create_account.login_link"}}&nbsp;{{i18n "log_in"}}
   {{/d-button}}
 </div>
 {{/unless}}

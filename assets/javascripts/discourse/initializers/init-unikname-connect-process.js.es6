@@ -2,9 +2,7 @@ import { withPluginApi } from "discourse/lib/plugin-api";
 import discourseComputed, { observes } from "discourse-common/utils/decorators";
 import { findAll } from "discourse/models/login-method";
 
-const OIDC_NAME = "oidc";
-
-function initialize(api) {
+function initializeBetterAuthUX(api) {
 
   api.modifyClass("controller:create-account", {
     steps: {
@@ -143,10 +141,10 @@ function initialize(api) {
     showOncreateAfterLogin(hasAuthOptions) {
       return hasAuthOptions ? 'forceDisplay' : '';
     },
-    @discourseComputed("authOptions.auth_provider")
-    showBypassEmail() {
-      return this.get("authOptions.auth_provider") === OIDC_NAME;
-    },
+    // @discourseComputed("authOptions.auth_provider")
+    // showBypassEmail() {
+    //   return this.get("authOptions.auth_provider") === OIDC_NAME;
+    // },
     @observes("usernameValidation")
     changeNextButtonState: function() {
       $(".next-btn").prop("disabled", !this.get("usernameValidation.ok"));
@@ -204,17 +202,23 @@ function initialize(api) {
 
   });
 
+}
+
+function initializeUnikname(api) {
+
+  const OIDC_NAME = "unikname";
+
   api.modifyClass("component:login-buttons", {
     @discourseComputed
     buttons() {
       return findAll()
       .map(button => {
-        button.set("isOIDC", button.name === OIDC_NAME);
+        button.set("isUnikname", button.name === OIDC_NAME);
         return button;
       })
       .sort((a, b) => {
-        // Put OIDC on top
-        return a.isOIDC ? -1 : 1;
+        // Put Unikname on top
+        return a.isUnikname ? -1 : 1;
       });
     }
   });
@@ -225,8 +229,13 @@ export default {
 
   initialize(container) {
     const siteSettings = container.lookup("site-settings:main");
-    if (siteSettings.openid_connect_enabled) {
-      withPluginApi("0.8.8", initialize);
+
+    // Better Auth UX init
+    withPluginApi("0.8.8", initializeBetterAuthUX);
+
+    // Unikname init
+    if (siteSettings.unikname_enabled) {
+      withPluginApi("0.8.8", initializeUnikname);
     }
   }
 };

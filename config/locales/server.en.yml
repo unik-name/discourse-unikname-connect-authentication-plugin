@@ -1,13 +1,13 @@
 en:
   site_settings:
-    openid_connect_enabled: Enable OpenID Connect authentication. Customize user interface text <a href='%{base_path}/admin/customize/site_texts?q=js.login.oidc'>here</a>
-    openid_connect_discovery_document: "OpenID Connect discovery document URL. Normally located at 'https://your.domain/.well-known/openid-configuration'"
-    openid_connect_client_id: "OpenID Connect client ID"
-    openid_connect_client_secret: "OpenID Connect client secret"
-    openid_connect_authorize_scope: "The scopes sent to the authorize endpoint. This must include 'openid'."
-    openid_connect_token_scope: "The scopes sent when requesting the token endpoint. The official specification does not require this."
-    openid_connect_error_redirects: "If the callback error_reason contains the first parameter, the user will be redirected to the URL in the second parameter"
-    openid_connect_allow_association_change: "Allow users to disconnect and reconnect their Discourse accounts from the OpenID Connect provider"
-    openid_connect_verbose_logging: "Log detailed openid-connect authentication information to `/logs`. Keep this disabled during normal use."
-    openid_connect_authorize_parameters: "URL parameters which will be included in the redirect from /auth/oidc to the IDP's authorize endpoint"
-    openid_connect_overrides_email: "On every login, override the user's email using the openid-connect value"
+    unikname_enabled: Enable Unikname Connect authentication. Customize user interface text <a href='%{base_path}/admin/customize/site_texts?q=js.login.unikname'>here</a>
+    unikname_discovery_document: "Unikname connect discovery document URL. Normally located at 'https://connect.unikname.com/oidc/.well-known/openid-configuration'"
+    unikname_client_id: "Unikname Connect client ID"
+    unikname_client_secret: "Unikname Connect client secret"
+    unikname_authorize_scope: "The scopes sent to the authorize endpoint. This must include 'openid'."
+    unikname_token_scope: "The scopes sent when requesting the token endpoint. The official specification does not require this."
+    unikname_error_redirects: "If the callback error_reason contains the first parameter, the user will be redirected to the URL in the second parameter"
+    unikname_allow_association_change: "Allow users to disconnect and reconnect their Discourse accounts from the Unikname Connect provider"
+    unikname_verbose_logging: "Log detailed unikname authentication information to `/logs`. Keep this disabled during normal use."
+    unikname_authorize_parameters: "URL parameters which will be included in the redirect from /auth/unikname to the IDP's authorize endpoint"
+    unikname_overrides_email: "On every login, override the user's email using the unikname value"

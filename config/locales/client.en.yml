@@ -1,12 +1,17 @@
 en:
   js:
     login:
-      oidc:
-        name: "OpenID Connect"
-        title: "with OpenID Connect"
-        message: "Authenticating with OpenID Connect"
+      unikname:
+        name: "Unikname Connect"
+        title: "with @unikname"
+        message: "Authenticating with Unikname Connect"
         create_account:
           login_link: "Already have an account?"
+          unikname_button:
+            description: "We recommend the next-generation authentication simple, secure, private"
+            caption:
+              dont_have_one: "If you don't have your @unikname yet, "
+              link_name: get one now for free
           steps:
             presentation:
               title: "Welcome to this forum"

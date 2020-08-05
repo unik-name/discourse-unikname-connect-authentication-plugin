@@ -1,19 +1,19 @@
 # frozen_string_literal: true
-class OpenIDConnectAuthenticator < Auth::ManagedAuthenticator
+class UniknameConnectAuthenticator < Auth::ManagedAuthenticator
   def name
-    'oidc'
+    'unikname'
   end
 
   def can_revoke?
-    SiteSetting.openid_connect_allow_association_change
+    SiteSetting.unikname_allow_association_change
   end
 
   def can_connect_existing_user?
-    SiteSetting.openid_connect_allow_association_change
+    SiteSetting.unikname_allow_association_change
   end
 
   def enabled?
-    SiteSetting.openid_connect_enabled
+    SiteSetting.unikname_enabled
   end
 
   def primary_email_verified?(auth)
@@ -23,16 +23,16 @@ class OpenIDConnectAuthenticator < Auth::ManagedAuthenticator
   end
 
   def always_update_user_email?
-    SiteSetting.openid_connect_overrides_email
+    SiteSetting.unikname_overrides_email
   end
 
   def register_middleware(omniauth)
 
-    omniauth.provider :openid_connect,
-      name: :oidc,
+    omniauth.provider :unikname,
+      name: :unikname,
       cache: lambda { |key, &blk| Rails.cache.fetch(key, expires_in: 10.minutes, &blk) },
       error_handler: lambda { |error, message|
-        handlers = SiteSetting.openid_connect_error_redirects.split("\n")
+        handlers = SiteSetting.unikname_error_redirects.split("\n")
         handlers.each do |row|
           parts = row.split("|")
           return parts[1] if message.include? parts[0]
@@ -40,24 +40,24 @@ class OpenIDConnectAuthenticator < Auth::ManagedAuthenticator
         nil
       },
       verbose_logger: lambda { |message|
-        return unless SiteSetting.openid_connect_verbose_logging
+        return unless SiteSetting.unikname_verbose_logging
         Rails.logger.warn("OIDC Log: #{message}")
       },
       setup: lambda { |env|
         opts = env['omniauth.strategy'].options
 
         token_params = {}
-        token_params[:scope] = SiteSetting.openid_connect_token_scope if SiteSetting.openid_connect_token_scope.present?
+        token_params[:scope] = SiteSetting.unikname_token_scope if SiteSetting.unikname_token_scope.present?
 
         opts.deep_merge!(
-          client_id: SiteSetting.openid_connect_client_id,
-          client_secret: SiteSetting.openid_connect_client_secret,
+          client_id: SiteSetting.unikname_client_id,
+          client_secret: SiteSetting.unikname_client_secret,
           client_options: {
-            discovery_document: SiteSetting.openid_connect_discovery_document,
+            discovery_document: SiteSetting.unikname_discovery_document,
           },
-          scope: SiteSetting.openid_connect_authorize_scope,
+          scope: SiteSetting.unikname_authorize_scope,
           token_params: token_params,
-          passthrough_authorize_options: SiteSetting.openid_connect_authorize_parameters.split("|")
+          passthrough_authorize_options: SiteSetting.unikname_authorize_parameters.split("|")
         )
       }
   end

@@ -1,3 +1,5 @@
+$provider_name: "unikname";
+
 .d-modal.fixed-modal.login-modal,
 .d-modal.fixed-modal.create-account {
   flex-direction: column-reverse;
@@ -41,6 +43,7 @@
     // MODAL BODY
     .modal-body {
       flex-direction: column-reverse;
+      align-items: normal;
 
       input {
         width: 100%;
@@ -59,6 +62,7 @@
         flex-direction: column;
         align-items: center;
         padding: 1em !important;
+        min-height: 0px;
 
         .oidc-before {
           margin-bottom: 1em;
@@ -66,7 +70,7 @@
           padding: 0 1em;
         }
 
-        .btn.btn-social.oidc {
+        .btn.btn-social.#{$provider_name} {
           margin-top: 0px !important;
         }
 
@@ -78,6 +82,9 @@
             color: inherit;
             text-decoration: underline;
           }
+        }
+        button:first-of-type {
+          margin-top: 0px;
         }
       }
 
@@ -92,7 +99,7 @@
         &:focus {
           outline: none;
         }
-        &.oidc {
+        &.#{$provider_name} {
           background-color: $tertiary;
           .oidc-logo {
             margin-right: 0.45em;
@@ -138,7 +145,7 @@
           #login-form {
             border: 1px solid #cecece;
             border-radius: 5px;
-            margin: 1em;
+            margin: 0rem 1em;
             padding: 1em;
             #credentials {
               padding: 0px;

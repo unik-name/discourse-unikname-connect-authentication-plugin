@@ -7,7 +7,7 @@ describe OpenIDConnectAuthenticator do
   let(:authenticator) { described_class.new }
   let(:user) { Fabricate(:user) }
   let(:hash) { OmniAuth::AuthHash.new(
-    provider: "oidc",
+    provider: "unikname",
     uid: "123456789",
     info: {
         name: "John Doe",
