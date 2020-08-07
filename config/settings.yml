@@ -3,7 +3,7 @@ plugins:
     default: false
     client: true
   unikname_connect_discovery_document:
-    default: "https://integ.connect.unikname.com/oidc/.well-known/openid-configuration"
+    default: "https://connect.unikname.com/oidc/.well-known/openid-configuration"
   unikname_connect_client_id:
     default: ""
   unikname_connect_client_secret:
