@@ -59,7 +59,6 @@ class UniknameConnectAuthenticator < Auth::ManagedAuthenticator
           token_params: token_params,
           passthrough_authorize_options: SiteSetting.unikname_connect_authorize_parameters.split("|"),
           )
-        opts[:callback_path] = "#{opts.path_prefix}/auth/oidc/callback" if SiteSetting.unikname_connect_force_oidc_callback_compatibility
       }
   end
 end

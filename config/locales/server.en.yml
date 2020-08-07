@@ -11,4 +11,3 @@ en:
     unikname_connect_verbose_logging: "Log detailed unikname authentication information to `/logs`. Keep this disabled during normal use."
     unikname_connect_authorize_parameters: "URL parameters which will be included in the redirect from /auth/unikname to the IDP's authorize endpoint"
     unikname_connect_overrides_email: "On every login, override the user's email using the unikname value"
-    unikname_connect_force_oidc_callback_compatibility: "Force oidc compatibility"

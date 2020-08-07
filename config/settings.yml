@@ -26,5 +26,3 @@ plugins:
     default: ''
     type: list
     list_type: compact
-  unikname_connect_force_oidc_callback_compatibility:
-    default: false
