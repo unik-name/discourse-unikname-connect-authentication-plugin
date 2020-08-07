@@ -3,7 +3,7 @@ en:
     login:
       unikname:
         name: "Unikname Connect"
-        title: "with @unikname"
+        title: "with your @unikname"
         message: "Authenticating with Unikname Connect"
         create_account:
           login_link: "Already have an account?"

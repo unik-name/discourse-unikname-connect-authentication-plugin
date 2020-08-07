@@ -26,6 +26,8 @@ $provider_name: "unikname";
         display: flex;
         flex-direction: column;
         justify-content: center;
+        margin: 0px;
+        border: none;
         &:hover {
           .d-icon {
             color: $secondary;
@@ -51,7 +53,6 @@ $provider_name: "unikname";
         line-height: 2em;
         margin-top: 0.5em;
         &:focus {
-          border-color: transparent;
           box-shadow: 0 0 6px 0 $header_background;
         }
       }
@@ -206,7 +207,6 @@ $provider_name: "unikname";
                 line-height: 2em;
                 margin-top: 0.5em;
                 &:focus {
-                  border-color: transparent;
                   box-shadow: 0 0 6px 0 $header_background;
                 }
               }
@@ -325,6 +325,8 @@ $provider_name: "unikname";
           font-size: 1.1em;
           border-radius: 5px;
           width: 100%;
+          background-color: $tertiary;
+          color: $secondary;
           svg {
             height: 20px;
           }
