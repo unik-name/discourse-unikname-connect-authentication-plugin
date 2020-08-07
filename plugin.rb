@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-# name: discourse-unikname-connect
+# name: discourse-unikname
 # about: Add support for Unikname Connect as a login provider
 # version: 1.0
 # authors: Unikname
-# url: https://github.com/unik-name/discourse-unikname-connect
+# url: https://github.com/unik-name/discourse-unikname
 
 require_relative "lib/omniauth_open_id_connect"
 require_relative "lib/unikname_connect_authenticator"
