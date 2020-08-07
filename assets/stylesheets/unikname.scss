@@ -142,7 +142,7 @@ $provider_name: "unikname";
         .login-form-container {
           width: 100%;
           #login-form {
-            border: 1px solid #cecece;
+            border: 1px solid transparentize($quaternary, 0.6);
             border-radius: 5px;
             margin: 0rem 1em;
             padding: 1em;
@@ -168,9 +168,6 @@ $provider_name: "unikname";
             }
 
             &#accountEmailStep {
-              #new-account-email:disabled {
-                background-color: #ccc;
-              }
               .bypassEmail {
                 display: flex;
                 flex-direction: row;
@@ -244,7 +241,7 @@ $provider_name: "unikname";
             height: 1em;
             margin: 0 0.5em;
             border-radius: 50%;
-            background-color: #c4c4c4;
+            background-color: transparentize($secondary, 0.4);
             &.active {
               background-color: $tertiary;
             }
