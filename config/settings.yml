@@ -1,27 +1,30 @@
 plugins:
-  openid_connect_enabled:
+  unikname_connect_enabled:
     default: false
-  openid_connect_discovery_document:
+    client: true
+  unikname_connect_discovery_document:
+    default: "https://integ.connect.unikname.com/oidc/.well-known/openid-configuration"
+  unikname_connect_client_id:
     default: ""
-  openid_connect_client_id:
+  unikname_connect_client_secret:
     default: ""
-  openid_connect_client_secret:
-    default: ""
-  openid_connect_allow_association_change:
+  unikname_connect_allow_association_change:
     default: false
-  openid_connect_overrides_email:
+  unikname_connect_overrides_email:
     default: false
-  openid_connect_authorize_scope:
+  unikname_connect_authorize_scope:
     default: "openid"
-  openid_connect_verbose_logging:
+  unikname_connect_verbose_logging:
     default: false
-  openid_connect_token_scope:
+  unikname_connect_token_scope:
     default: ""
-  openid_connect_error_redirects:
+  unikname_connect_error_redirects:
     default: ''
     type: list
     list_type: secret
-  openid_connect_authorize_parameters:
+  unikname_connect_authorize_parameters:
     default: ''
     type: list
     list_type: compact
+  unikname_connect_force_oidc_callback_compatibility:
+    default: false

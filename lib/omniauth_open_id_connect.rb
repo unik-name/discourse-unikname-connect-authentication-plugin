@@ -3,12 +3,12 @@
 require 'omniauth-oauth2'
 
 module ::OmniAuth
-  module OpenIDConnect
+  module UniknameConnect
     class DiscoveryError < Error; end
   end
 
   module Strategies
-    class OpenIDConnect < OmniAuth::Strategies::OAuth2
+    class UniknameConnect < OmniAuth::Strategies::OAuth2
       option :scope, "openid"
       option :discovery, true
       option :use_userinfo, true
@@ -32,7 +32,7 @@ module ::OmniAuth
 
       def discover!
         verbose_log("Fetching discovery document from #{options[:client_options][:discovery_document]}")
-        discovery_document = options.cache.call("openid_discovery_#{options[:client_options][:discovery_document]}") do
+        discovery_document = options.cache.call("unikname_connect_discovery_#{options[:client_options][:discovery_document]}") do
           client.request(:get, options[:client_options][:discovery_document], parse: :json).parsed
         end
         verbose_log("Discovery document loaded\n\n#{discovery_document.to_yaml}")
@@ -45,7 +45,7 @@ module ::OmniAuth
 
         discovery_params.each do |internal_key, external_key|
           val = discovery_document[external_key].to_s
-          raise ::OmniAuth::OpenIDConnect::DiscoveryError.new("missing discovery parameter #{external_key}") if val.nil? || val.empty?
+          raise ::OmniAuth::UniknameConnect::DiscoveryError.new("missing discovery parameter #{external_key}") if val.nil? || val.empty?
           options[:client_options][internal_key] = val
         end
 
@@ -56,8 +56,8 @@ module ::OmniAuth
       def request_phase
         begin
           discover! if options[:discovery]
-        rescue ::OmniAuth::OpenIDConnect::DiscoveryError => e
-          fail!(:openid_connect_discovery_error, e)
+        rescue ::OmniAuth::UniknameConnect::DiscoveryError => e
+          fail!(:unikname_connect_discovery_error, e)
         end
 
         super
@@ -103,8 +103,8 @@ module ::OmniAuth
             return fail!(:csrf_detected, CallbackError.new(:csrf_detected, "CSRF detected"))
           end
           oauth2_callback_phase
-        rescue ::OmniAuth::OpenIDConnect::DiscoveryError => e
-          fail!(:openid_connect_discovery_error, e)
+        rescue ::OmniAuth::UniknameConnect::DiscoveryError => e
+          fail!(:unikname_connect_discovery_error, e)
         rescue JWT::DecodeError => e
           fail!(:jwt_decode_failed, e)
         end
@@ -199,4 +199,4 @@ module ::OmniAuth
   end
 end
 
-OmniAuth.config.add_camelization 'openid_connect', 'OpenIDConnect'
+OmniAuth.config.add_camelization 'unikname', 'UniknameConnect'

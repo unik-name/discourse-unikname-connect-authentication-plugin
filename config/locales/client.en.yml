@@ -1,7 +1,42 @@
 en:
   js:
     login:
-      oidc:
-        name: "OpenID Connect"
-        title: "with OpenID Connect"
-        message: "Authenticating with OpenID Connect"
+      unikname:
+        name: "Unikname Connect"
+        title: "with @unikname"
+        message: "Authenticating with Unikname Connect"
+        create_account:
+          login_link: "Already have an account?"
+          unikname_connect_button:
+            description: "We recommend the next-generation authentication simple, secure, private"
+            caption:
+              dont_have_one: "If you don't have your @unikname yet, "
+              link_name: get one now for free
+          steps:
+            presentation:
+              title: "Welcome to this forum"
+              description1: "Your account has been created."
+              description2: "It's time now to set it up!"
+            username:
+              title: "How do you want to appear on this forum?"
+              description: "Your username will be seen publicly by other forum members and visitors."
+            fullname:
+              title: "Full name"
+              description: "Full name is optional, you can fill it to display your public name."
+            email:
+              title: "Enter your email to receive forum messages"
+              description: "Your email will be used to receive messages from other members and to receive your activity summary."
+              bypass_email:
+                label: "No email at all"
+                instructions: "For a better experience on this forum we recommend to subscribe with an email. You will be able to adjust email settings in your Preferences."
+            password:
+              title: "Enter your password"
+              description: "A password is required, please choose one."
+            invitation_code:
+              title: "Enter your invitation code"
+              description: "Blabla invitation code"
+    user:
+      username:
+        title: "Forum username"
+
+

@@ -1,0 +1,356 @@
+$provider_name: "unikname";
+
+.d-modal.fixed-modal.login-modal,
+.d-modal.fixed-modal.create-account {
+  flex-direction: column-reverse;
+
+  .modal-inner-container {
+    max-width: 100%;
+    max-height: 100vh;
+    margin-bottom: 0px;
+
+    // MODAL HEADER
+    .modal-header {
+      background-color: $header_background;
+      color: $secondary;
+      text-align: center;
+      .title {
+        width: 100%;
+      }
+      position: relative;
+      .btn-flat.close {
+        position: absolute;
+        right: 0.5em;
+        top: 0;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        &:hover {
+          .d-icon {
+            color: $secondary;
+          }
+        }
+        .d-icon {
+          color: $secondary;
+          &:hover {
+            color: $tertiary;
+          }
+        }
+      }
+    }
+
+    // MODAL BODY
+    .modal-body {
+      flex-direction: column-reverse;
+      align-items: normal;
+
+      input {
+        width: 100%;
+        border-radius: 5px;
+        line-height: 2em;
+        margin-top: 0.5em;
+        &:focus {
+          border-color: transparent;
+          box-shadow: 0 0 6px 0 $header_background;
+        }
+      }
+
+      #login-buttons {
+        border-left: none !important;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 1em !important;
+        min-height: 0px;
+
+        .oidc-before {
+          margin-bottom: 1em;
+          text-align: center;
+          padding: 0 1em;
+        }
+
+        .btn.btn-social.#{$provider_name} {
+          margin-top: 0px !important;
+        }
+
+        .oidc-after {
+          text-align: center;
+          padding: 0 1em;
+          font-size: 0.9em;
+          a.unikname-link {
+            color: inherit;
+            text-decoration: underline;
+          }
+        }
+        button:first-of-type {
+          margin-top: 0px;
+        }
+      }
+
+      button {
+        padding: 0.5em 1em;
+        border-radius: 5px;
+        font-size: 1.1em;
+        margin-left: 0px !important;
+        margin-right: 0px !important;
+        width: 100%;
+        &:focus {
+          outline: none;
+        }
+        &.#{$provider_name} {
+          background-color: $tertiary;
+          .oidc-logo {
+            margin-right: 0.45em;
+          }
+        }
+        &:last-of-type {
+          margin-bottom: inherit !important;
+        }
+        svg {
+          width: 20px;
+          height: 20px;
+        }
+        &.login-with-email-button {
+          display: none;
+        }
+        &#login-button {
+          background-color: $tertiary;
+        }
+      }
+
+      .login-or {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        margin: 2em 0px;
+        width: 100% !important;
+
+        &:before,
+        &:after {
+          content: "";
+          width: 4em;
+          margin: 0 0.5em;
+          border-bottom: 2px solid $primary;
+        }
+      }
+
+      &.login-modal {
+        max-height: inherit !important;
+
+        .login-form-container {
+          width: 100%;
+          #login-form {
+            border: 1px solid transparentize($quaternary, 0.6);
+            border-radius: 5px;
+            margin: 0rem 1em;
+            padding: 1em;
+            #credentials {
+              padding: 0px;
+            }
+          }
+        }
+
+        .form-login-buttons {
+          display: flex;
+          justify-content: flex-end;
+        }
+      }
+    }
+
+    .create-account {
+      .modal-body {
+        .create-account-steps {
+          .create-account-step {
+            &#presentationStep {
+              display: flex;
+            }
+
+            &#accountEmailStep {
+              .bypassEmail {
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-start;
+                align-items: center;
+                margin-top: 1em;
+                input {
+                  margin: 0px 0.5em 0px 0px;
+                  width: inherit;
+                }
+              }
+            }
+            p {
+              text-align: center;
+              margin-bottom: 1em;
+            }
+
+            display: none;
+            transition: display linear 0.5s;
+            flex-direction: column;
+            align-items: center;
+
+            .create-account-step-icon {
+              margin: 0.5em 0;
+              font-size: 4em;
+              color: $header_background;
+            }
+
+            .input-section {
+              width: 100%;
+              margin-top: 1em;
+
+              input {
+                width: 100%;
+                border-radius: 5px;
+                line-height: 2em;
+                margin-top: 0.5em;
+                &:focus {
+                  border-color: transparent;
+                  box-shadow: 0 0 6px 0 $header_background;
+                }
+              }
+
+              .instructions label {
+                font-style: italic;
+                opacity: 0.6;
+                font-size: 0.9em;
+              }
+            }
+          }
+        }
+      }
+
+      .modal-footer {
+        border: 0px;
+        padding: 0;
+        display: none;
+        &.forceDisplay {
+          display: block;
+        }
+
+        #step-indicators {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: center;
+          background-color: $header_background;
+          padding: 1em 0;
+          span {
+            width: 1em;
+            height: 1em;
+            margin: 0 0.5em;
+            border-radius: 50%;
+            background-color: transparentize($secondary, 0.4);
+            &.active {
+              background-color: $tertiary;
+            }
+          }
+        }
+
+        .buttons {
+          padding: 0.5em 1em;
+          display: flex;
+          flex-direction: row;
+          justify-content: flex-end;
+          button {
+            outline: none;
+            &.btn-primary {
+              &,
+              &:active {
+                background-color: $tertiary;
+                color: $secondary;
+              }
+            }
+            &.submit-btn {
+              display: none;
+            }
+            &.back-btn {
+              display: none;
+            }
+            &.next-btn {
+              display: block;
+            }
+          }
+        }
+        .sub-footer {
+          background-color: $header_background;
+          .disclaimer {
+            text-align: center;
+            font-size: 0.8em;
+            color: transparentize($secondary, 0.2);
+            margin-top: 0px;
+            padding: 0 0.5em 0.5em 0.5em;
+            a {
+              color: $secondary;
+              font-weight: bold;
+            }
+          }
+        }
+      }
+    }
+
+    #new-account-link,
+    #login-link {
+      width: 100%;
+      font-size: 0.9em;
+      &:focus {
+        outline: none;
+      }
+      margin-bottom: 0.5em;
+    }
+  }
+
+  &.create-account {
+    .login-form {
+      &:after {
+        background-image: none;
+      }
+
+      display: none;
+      &.forceDisplay {
+        display: flex;
+      }
+    }
+    .login-buttons-with-email {
+      display: flex;
+      flex-direction: column-reverse;
+      .login-email {
+        padding: 0 1em;
+        button {
+          padding: 0.5em 1em;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          font-size: 1.1em;
+          border-radius: 5px;
+          width: 100%;
+          svg {
+            height: 20px;
+          }
+        }
+      }
+    }
+  }
+  .loading-container {
+    position: fixed;
+    top: calc(50% - 2em);
+    left: calc(50% - 2em);
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .d-modal {
+    &.fixed-modal {
+      .modal-inner-container {
+        width: 450px;
+      }
+    }
+  }
+}
+
+@media screen and (max-height: 650px) {
+  .d-modal.create-account .login-form form {
+    max-height: inherit;
+  }
+}
