@@ -32,7 +32,7 @@ module ::OmniAuth
 
       def discover!
         verbose_log("Fetching discovery document from #{options[:client_options][:discovery_document]}")
-        discovery_document = options.cache.call("unikname_discovery_#{options[:client_options][:discovery_document]}") do
+        discovery_document = options.cache.call("unikname_connect_discovery_#{options[:client_options][:discovery_document]}") do
           client.request(:get, options[:client_options][:discovery_document], parse: :json).parsed
         end
         verbose_log("Discovery document loaded\n\n#{discovery_document.to_yaml}")
@@ -57,7 +57,7 @@ module ::OmniAuth
         begin
           discover! if options[:discovery]
         rescue ::OmniAuth::UniknameConnect::DiscoveryError => e
-          fail!(:unikname_discovery_error, e)
+          fail!(:unikname_connect_discovery_error, e)
         end
 
         super
@@ -104,7 +104,7 @@ module ::OmniAuth
           end
           oauth2_callback_phase
         rescue ::OmniAuth::UniknameConnect::DiscoveryError => e
-          fail!(:unikname_discovery_error, e)
+          fail!(:unikname_connect_discovery_error, e)
         rescue JWT::DecodeError => e
           fail!(:jwt_decode_failed, e)
         end

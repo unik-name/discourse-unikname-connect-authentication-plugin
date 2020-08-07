@@ -5,15 +5,15 @@ class UniknameConnectAuthenticator < Auth::ManagedAuthenticator
   end
 
   def can_revoke?
-    SiteSetting.unikname_allow_association_change
+    SiteSetting.unikname_connect_allow_association_change
   end
 
   def can_connect_existing_user?
-    SiteSetting.unikname_allow_association_change
+    SiteSetting.unikname_connect_allow_association_change
   end
 
   def enabled?
-    SiteSetting.unikname_enabled
+    SiteSetting.unikname_connect_enabled
   end
 
   def primary_email_verified?(auth)
@@ -23,7 +23,7 @@ class UniknameConnectAuthenticator < Auth::ManagedAuthenticator
   end
 
   def always_update_user_email?
-    SiteSetting.unikname_overrides_email
+    SiteSetting.unikname_connect_overrides_email
   end
 
   def register_middleware(omniauth)
@@ -32,7 +32,7 @@ class UniknameConnectAuthenticator < Auth::ManagedAuthenticator
       name: :unikname,
       cache: lambda { |key, &blk| Rails.cache.fetch(key, expires_in: 10.minutes, &blk) },
       error_handler: lambda { |error, message|
-        handlers = SiteSetting.unikname_error_redirects.split("\n")
+        handlers = SiteSetting.unikname_connect_error_redirects.split("\n")
         handlers.each do |row|
           parts = row.split("|")
           return parts[1] if message.include? parts[0]
@@ -40,25 +40,26 @@ class UniknameConnectAuthenticator < Auth::ManagedAuthenticator
         nil
       },
       verbose_logger: lambda { |message|
-        return unless SiteSetting.unikname_verbose_logging
+        return unless SiteSetting.unikname_connect_verbose_logging
         Rails.logger.warn("OIDC Log: #{message}")
       },
       setup: lambda { |env|
         opts = env['omniauth.strategy'].options
 
         token_params = {}
-        token_params[:scope] = SiteSetting.unikname_token_scope if SiteSetting.unikname_token_scope.present?
+        token_params[:scope] = SiteSetting.unikname_connect_token_scope if SiteSetting.unikname_connect_token_scope.present?
 
         opts.deep_merge!(
-          client_id: SiteSetting.unikname_client_id,
-          client_secret: SiteSetting.unikname_client_secret,
+          client_id: SiteSetting.unikname_connect_client_id,
+          client_secret: SiteSetting.unikname_connect_client_secret,
           client_options: {
-            discovery_document: SiteSetting.unikname_discovery_document,
+            discovery_document: SiteSetting.unikname_connect_discovery_document,
           },
-          scope: SiteSetting.unikname_authorize_scope,
+          scope: SiteSetting.unikname_connect_authorize_scope,
           token_params: token_params,
-          passthrough_authorize_options: SiteSetting.unikname_authorize_parameters.split("|")
-        )
+          passthrough_authorize_options: SiteSetting.unikname_connect_authorize_parameters.split("|"),
+          )
+        opts[:callback_path] = "#{opts.path_prefix}/auth/oidc/callback" if SiteSetting.unikname_connect_force_oidc_callback_compatibility
       }
   end
 end

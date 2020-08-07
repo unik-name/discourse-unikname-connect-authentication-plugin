@@ -7,7 +7,7 @@
 # url: https://github.com/unik-name/discourse-unikname-connect
 
 require_relative "lib/omniauth_open_id_connect"
-require_relative "lib/unikname_authenticator"
+require_relative "lib/unikname_connect_authenticator"
 
 register_asset 'stylesheets/unikname.scss'
 

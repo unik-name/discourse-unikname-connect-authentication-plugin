@@ -234,7 +234,7 @@ export default {
     withPluginApi("0.8.8", initializeBetterAuthUX);
 
     // Unikname init
-    if (siteSettings.unikname_enabled) {
+    if (siteSettings.unikname_connect_enabled) {
       withPluginApi("0.8.8", initializeUnikname);
     }
   }

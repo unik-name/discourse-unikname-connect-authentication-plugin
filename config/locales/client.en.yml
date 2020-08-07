@@ -7,7 +7,7 @@ en:
         message: "Authenticating with Unikname Connect"
         create_account:
           login_link: "Already have an account?"
-          unikname_button:
+          unikname_connect_button:
             description: "We recommend the next-generation authentication simple, secure, private"
             caption:
               dont_have_one: "If you don't have your @unikname yet, "
