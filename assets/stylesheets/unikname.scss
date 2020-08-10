@@ -11,8 +11,6 @@ $provider_name: "unikname";
 
     // MODAL HEADER
     .modal-header {
-      background-color: $header_background;
-      color: $secondary;
       text-align: center;
       .title {
         width: 100%;
@@ -77,7 +75,6 @@ $provider_name: "unikname";
         .oidc-after {
           text-align: center;
           padding: 0 1em;
-          font-size: 0.9em;
           a.unikname-link {
             color: inherit;
             text-decoration: underline;
@@ -91,7 +88,6 @@ $provider_name: "unikname";
       button {
         padding: 0.5em 1em;
         border-radius: 5px;
-        font-size: 1.1em;
         margin-left: 0px !important;
         margin-right: 0px !important;
         width: 100%;
@@ -142,7 +138,7 @@ $provider_name: "unikname";
         .login-form-container {
           width: 100%;
           #login-form {
-            border: 1px solid transparentize($quaternary, 0.6);
+            border: 1px solid transparentize($primary, 0.6);
             border-radius: 5px;
             margin: 0rem 1em;
             padding: 1em;
@@ -193,7 +189,6 @@ $provider_name: "unikname";
             .create-account-step-icon {
               margin: 0.5em 0;
               font-size: 4em;
-              color: $header_background;
             }
 
             .input-section {
@@ -210,7 +205,6 @@ $provider_name: "unikname";
               .instructions label {
                 font-style: italic;
                 opacity: 0.6;
-                font-size: 0.9em;
               }
             }
           }
@@ -230,14 +224,13 @@ $provider_name: "unikname";
           flex-direction: row;
           align-items: center;
           justify-content: center;
-          background-color: $header_background;
           padding: 1em 0;
           span {
             width: 1em;
             height: 1em;
             margin: 0 0.5em;
             border-radius: 50%;
-            background-color: transparentize($secondary, 0.4);
+            background-color: transparentize($tertiary, 0.9);
             &.active {
               background-color: $tertiary;
             }
@@ -270,17 +263,10 @@ $provider_name: "unikname";
           }
         }
         .sub-footer {
-          background-color: $header_background;
           .disclaimer {
             text-align: center;
-            font-size: 0.8em;
-            color: transparentize($secondary, 0.2);
             margin-top: 0px;
             padding: 0 0.5em 0.5em 0.5em;
-            a {
-              color: $secondary;
-              font-weight: bold;
-            }
           }
         }
       }
@@ -289,7 +275,6 @@ $provider_name: "unikname";
     #new-account-link,
     #login-link {
       width: 100%;
-      font-size: 0.9em;
       &:focus {
         outline: none;
       }
@@ -318,7 +303,6 @@ $provider_name: "unikname";
           display: flex;
           flex-direction: row;
           align-items: center;
-          font-size: 1.1em;
           border-radius: 5px;
           width: 100%;
           background-color: $tertiary;
