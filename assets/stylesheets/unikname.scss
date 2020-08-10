@@ -70,6 +70,8 @@ $provider_name: "unikname";
 
         .btn.btn-social.#{$provider_name} {
           margin-top: 0px !important;
+          background-color: #0F2852;
+          color: #FFFFFF;
         }
 
         .oidc-after {
