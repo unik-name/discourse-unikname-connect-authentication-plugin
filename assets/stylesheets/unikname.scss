@@ -322,11 +322,10 @@ $provider_name: "unikname";
 }
 
 @media screen and (min-width: 600px) {
-  .d-modal {
-    &.fixed-modal {
-      .modal-inner-container {
-        width: 450px;
-      }
+  .d-modal.fixed-modal.login-modal,
+  .d-modal.fixed-modal.create-account {
+    .modal-inner-container {
+      width: 450px;
     }
   }
 }
