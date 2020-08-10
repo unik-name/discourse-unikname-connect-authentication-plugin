@@ -52,9 +52,6 @@ $provider_name: "unikname";
         border-radius: 5px;
         line-height: 2em;
         margin-top: 0.5em;
-        &:focus {
-          box-shadow: 0 0 6px 0 $header_background;
-        }
       }
 
       #login-buttons {
@@ -206,9 +203,6 @@ $provider_name: "unikname";
                 border-radius: 5px;
                 line-height: 2em;
                 margin-top: 0.5em;
-                &:focus {
-                  box-shadow: 0 0 6px 0 $header_background;
-                }
               }
 
               .instructions label {
