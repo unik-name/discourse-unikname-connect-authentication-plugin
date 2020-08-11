@@ -1,10 +1,10 @@
 en:
   site_settings:
-    unikname_connect_enabled: Enable Unikname Connect authentication. Customize user interface text <a href='%{base_path}/admin/customize/site_texts?q=js.login.unikname'>here</a>
-    unikname_connect_discovery_document: "Unikname connect discovery document URL. Normally located at 'https://connect.unikname.com/oidc/.well-known/openid-configuration'"
-    unikname_connect_client_id: "Unikname Connect client ID"
-    unikname_connect_client_secret: "Unikname Connect client secret"
-    unikname_connect_authorize_scope: "The scopes sent to the authorize endpoint. This must include 'openid'."
+    unikname_connect_enabled: Enable Unikname Connect authentication, requires unikname_connect_unikname_key and unikname_connect_secret. See <a href='https://docs.unikname.com/integration/connect/apps/discourse/' target='_blank'>Integrating Unikname Connect with Discourse</a>.
+    unikname_connect_discovery_document: Unikname Connect discovery document URL.
+    unikname_connect_unikname_key: Your organization's @unikname key for Unikname Connect authentication, registered at <a href='https://docs.unikname.com/integration/connect/apps/discourse/' target='_blank'>https://docs.unikname.com/integration/connect/apps/discourse/</a>
+    unikname_connect_secret: Secret key for Unikname Connect authentication, registered at <a href='https://docs.unikname.com/integration/connect/apps/discourse/' target='_blank'>https://docs.unikname.com/integration/connect/apps/discourse/</a>
+    unikname_connect_authorize_scope: "The scopes claimed to your users when using Unikname Connect. This must include 'openid'."
     unikname_connect_token_scope: "The scopes sent when requesting the token endpoint. The official specification does not require this."
     unikname_connect_error_redirects: "If the callback error_reason contains the first parameter, the user will be redirected to the URL in the second parameter"
     unikname_connect_allow_association_change: "Allow users to disconnect and reconnect their Discourse accounts from the Unikname Connect provider"

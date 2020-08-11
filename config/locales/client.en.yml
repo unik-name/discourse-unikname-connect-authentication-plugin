@@ -34,7 +34,7 @@ en:
               description: "A password is required, please choose one."
             invitation_code:
               title: "Enter your invitation code"
-              description: "Blabla invitation code"
+              description: ""
     user:
       username:
         title: "Forum username"
