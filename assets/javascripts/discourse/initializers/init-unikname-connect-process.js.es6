@@ -3,20 +3,19 @@ import discourseComputed, { observes } from "discourse-common/utils/decorators";
 import { findAll } from "discourse/models/login-method";
 
 function initializeBetterAuthUX(api) {
-
   api.modifyClass("controller:create-account", {
     steps: {
-      presentationStep: {
-        id: "presentationStep",
-        prev: (that) => false,
-        next: (that) => "accountUsernameStep",
-        canGoNextStep: (that) => {
-          return true;
-        }
-      },
       accountUsernameStep: {
         id: "accountUsernameStep",
-        prev: (that) => "presentationStep",
+        prev: (that) => {
+          if (that.requireInviteCode) {
+            return "accountInvitationCodeStep";
+          }
+          if (that.passwordRequired) {
+            return "accountPasswordStep";
+          }
+          return "accountEmailStep";
+        },
         next: (that) =>  {
           if (that.fullnameRequired) {
             return "accountFullNameStep";
@@ -31,17 +30,13 @@ function initializeBetterAuthUX(api) {
       accountFullNameStep: {
         id: "accountFullNameStep",
         prev: (that) => "accountUsernameStep",
-        next: (that) => "accountEmailStep",
-        canGoNextStep: (that) => true
+        next: (that) => "finalStep",
+        canGoNextStep: (that) => true,
+        isLastStep: (that) => true,
       },
       accountEmailStep: {
         id: "accountEmailStep",
-        prev: (that) => {
-          if (that.fullnameRequired) {
-            return "accountFullNameStep";
-          }
-          return "accountUsernameStep";
-        },
+        prev: (that) => false,
         next: (that) => {
           if (that.passwordRequired) {
             return "accountPasswordStep";
@@ -49,11 +44,10 @@ function initializeBetterAuthUX(api) {
           if (that.requireInviteCode) {
             return "accountInvitationCodeStep";
           }
-          return "accountPasswordStep"
+          return "accountUsernameStep"
         },
-        isLastStep: (that) => !that.requireInviteCode && !that.passwordRequired,
         canGoNextStep: (that) => {
-          return that.bypassEmail || that.get("emailValidation.ok");
+          return that.get("emailValidation.ok");
         }
       },
       accountPasswordStep: {
@@ -63,9 +57,8 @@ function initializeBetterAuthUX(api) {
           if (that.requireInviteCode) {
             return "accountInvitationCodeStep"
           }
-          return "finalStep";
+          return "accountUsernameStep";
         },
-        isLastStep: (that) => !that.requireInviteCode,
         disableNextFirst: true,
         canGoNextStep: (that) => {
           return that.passwordRequired ? !!that.get("passwordValidation.ok") : true;
@@ -79,8 +72,7 @@ function initializeBetterAuthUX(api) {
           }
           return "accountEmailStep";
         },
-        next: (that) => "finalStep",
-        isLastStep: (that) => true,
+        next: (that) => "accountUsernameStep",
         disableNextFirst: true,
         canGoNextStep: (that) => {
           return that.requireInviteCode ? that.inviteCode : true;
@@ -90,10 +82,9 @@ function initializeBetterAuthUX(api) {
         prev: "accountEmailStep"
       }
     },
-    bypassEmail: false,
     emailBackup: "",
     error: "",
-    activeStep: "presentationStep",
+    activeStep: "accountEmailStep",
     actions: {
       next() {
         this.moveStep(true);
@@ -124,7 +115,7 @@ function initializeBetterAuthUX(api) {
     },
     updateActionButtons(isNext) {
       // update buttons
-      var displayBackButton = this.activeStep !== this.steps.presentationStep.id;
+      var displayBackButton = this.activeStep !== this.steps.accountEmailStep.id;
       $(".back-btn").css("display", displayBackButton ? "block" : "none");
 
       var disableNextButton = isNext ? !this.steps[this.activeStep].canGoNextStep(this) : false
@@ -141,13 +132,9 @@ function initializeBetterAuthUX(api) {
     showOncreateAfterLogin(hasAuthOptions) {
       return hasAuthOptions ? 'forceDisplay' : '';
     },
-    // @discourseComputed("authOptions.auth_provider")
-    // showBypassEmail() {
-    //   return this.get("authOptions.auth_provider") === OIDC_NAME;
-    // },
-    @observes("usernameValidation")
+    @observes("usernameValidation", "passwordValidation")
     changeNextButtonState: function() {
-      $(".next-btn").prop("disabled", !this.get("usernameValidation.ok"));
+      $(".next-btn").prop("disabled", !this.steps[this.activeStep].canGoNextStep(this));
     },
     @observes("activeStep")
     showHideSubmitButtonState: function() {
@@ -158,48 +145,28 @@ function initializeBetterAuthUX(api) {
       var nextButtun = $(".next-btn");
       nextButtun.css("display", displaySubmitButton ? "none" : "block");
 
-      if (this.activeStep === this.steps.accountUsernameStep.id && !this.accountUsername) {
-        nextButtun.prop("disabled", true);
+      if (this.isLastStep()) {
+        var activateSubmitButton = !!this.get("usernameValidation.ok");
+        submitButton.prop("disabled", !activateSubmitButton);
       }
     },
-    // @observes("bypassEmail")
-    // resetEmailField() {
-    //   var emailInput = $("#new-account-email");
-    //   emailInput.prop("disabled", this.bypassEmail);
-    //   if (this.bypassEmail) {
-    //     this.emailBackup = this.accountEmail;
-    //     this.emailValidationBackup = this.get("emailValidation.failed");
-    //     this.set("emailValidation.failed", false);
-    //     this.set("emailValidation.message", "");
-    //     this.accountEmail = "";
-    //   } else {
-    //     this.set("emailValidation.failed", this.emailValidationBackup);
-    //     this.emailValidationBackup = null;
-    //     this.accountEmail = this.emailBackup;
-    //     this.emailBackup = "";
-    //   }
-    //   emailInput.val(this.accountEmail);
-    // },
-    @observes("accountEmail", "bypassEmail")
+    @observes("accountEmail")
     changeEmailNextButtonState: function() {
       if (this.activeStep === this.steps.accountEmailStep.id && !this.isLastStep()) {
-        var activateNextBtn = this.bypassEmail || !!this.get("emailValidation.ok");
+        var activateNextBtn = !!this.get("emailValidation.ok");
         $(".next-btn").prop("disabled", !activateNextBtn);
       }
     },
-    @observes("accountEmail", "accountPassword", "bypassEmail", "inviteCode")
-    changeSubmitButtonState: function() {
-      if (this.isLastStep()) {
-        var activateSubmitButton = false;
-        if (this.activeStep === this.steps.accountEmailStep.id) {
-          activateSubmitButton = this.bypassEmail || this.get("emailValidation.ok");
-        } else {
-          activateSubmitButton = this.get("passwordValidation.ok") && (this.requireInviteCode ? this.inviteCode : true);
-        }
-        $(".submit-btn").prop("disabled", !activateSubmitButton);
-      }
-    }
+  });
 
+  api.modifyClass("controller:login", {
+    actions: {
+      switchToMail() {
+        $(".d-modal.login-modal .login-modal #login-form").css("display", "block");
+        $(".d-modal.login-modal .login-modal #orEmail").css("display", "none");
+        $(".d-modal.login-modal .login-modal #login-buttons").css("display", "none");
+      }
+    },
   });
 
 }

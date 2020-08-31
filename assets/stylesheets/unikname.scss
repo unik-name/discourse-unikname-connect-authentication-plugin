@@ -28,11 +28,10 @@ $provider_name: "unikname";
         border: none;
         &:hover {
           .d-icon {
-            color: $secondary;
+            color: $tertiary;
           }
         }
         .d-icon {
-          color: $secondary;
           &:hover {
             color: $tertiary;
           }
@@ -138,13 +137,16 @@ $provider_name: "unikname";
         .login-form-container {
           width: 100%;
           #login-form {
-            border: 1px solid transparentize($primary, 0.6);
+            display: none;
             border-radius: 5px;
             margin: 0rem 1em;
             padding: 1em;
             #credentials {
               padding: 0px;
             }
+          }
+          #orEmail {
+            color: $tertiary;
           }
         }
 
@@ -159,23 +161,10 @@ $provider_name: "unikname";
       .modal-body {
         .create-account-steps {
           .create-account-step {
-            &#presentationStep {
+            &#accountEmailStep {
               display: flex;
             }
 
-            &#accountEmailStep {
-              .bypassEmail {
-                display: flex;
-                flex-direction: row;
-                justify-content: flex-start;
-                align-items: center;
-                margin-top: 1em;
-                input {
-                  margin: 0px 0.5em 0px 0px;
-                  width: inherit;
-                }
-              }
-            }
             p {
               text-align: center;
               margin-bottom: 1em;
@@ -292,6 +281,9 @@ $provider_name: "unikname";
       &.forceDisplay {
         display: flex;
       }
+      form {
+        max-height: none;
+      }
     }
     .login-buttons-with-email {
       display: flex;
@@ -318,6 +310,13 @@ $provider_name: "unikname";
     position: fixed;
     top: calc(50% - 2em);
     left: calc(50% - 2em);
+  }
+}
+
+.no-style {
+  background-color: transparent;
+  &:hover {
+    background-color: transparent !important;
   }
 }
 

@@ -26,21 +26,6 @@
   <form>
 
     <div class="create-account-steps">
-      <div class="create-account-step" id="presentationStep">
-        <h2>
-          {{i18n "login.unikname.create_account.steps.presentation.title"}}
-        </h2>
-        <div class="create-account-step-icon">
-          {{d-icon 'power-off'}}
-        </div>
-        <p>
-          {{i18n "login.unikname.create_account.steps.presentation.description1"}}
-        </p>
-        <p>
-          {{i18n "login.unikname.create_account.steps.presentation.description2"}}
-        </p>
-      </div>
-
       <div class="create-account-step" id="accountUsernameStep">
         <h2>
           {{i18n "login.unikname.create_account.steps.username.title"}}
@@ -113,15 +98,9 @@
 
           <div class="instructions">
             <label>{{i18n "user.email.instructions"}}</label>
+            <label>{{i18n "user.email.validity_instructions"}}</label>
             {{input-tip validation=emailValidation id="account-email-validation"}}
           </div>
-
-          {{!-- {{#if showBypassEmail}}
-          <div class="bypassEmail">
-            {{input type="checkbox" checked=bypassEmail}}
-            {{i18n "login.unikname.create_account.steps.email.bypass_email.label"}}
-          </div>
-          {{/if}} --}}
         </div>
       </div>
 
@@ -162,11 +141,7 @@
             {{input-tip validation=passwordValidation}}
           </div>
 
-          <div class="password-confirmation">
-            <label for="new-account-password-confirmation">{{i18n "user.password_confirmation.title"}}</label>
-            {{honeypot-input id="new-account-confirmation" autocomplete="new-password" value=accountHoneypot}}
-            {{input value=accountChallenge id="new-account-challenge"}}
-          </div>
+
         </div>
 
         {{plugin-outlet
@@ -182,6 +157,12 @@
 
       </div>
       {{/if}}
+
+      <div class="password-confirmation">
+        <label for="new-account-password-confirmation">{{i18n "user.password_confirmation.title"}}</label>
+        {{honeypot-input id="new-account-confirmation" autocomplete="new-password" value=accountHoneypot}}
+        {{input value=accountChallenge id="new-account-challenge"}}
+      </div>
 
       {{#if requireInviteCode}}
       <div class="create-account-step" id="accountInvitationCodeCodeStep">
@@ -237,24 +218,23 @@
             isLoading=formSubmitted
           }}
 
-    {{#d-button class="btn-large btn-primary next-btn" action=(action "next")}}
+    {{#d-button class="btn-large btn-primary next-btn" disabled="disabled" action=(action "next")}}
     Next!
     {{/d-button}}
   </div>
 
   <div class="sub-footer">
     <div id="step-indicators">
-      <span id="presentationStepIndicator" class="active"></span>
-      <span id="accountUsernameStepIndicator"></span>
-      {{#if fullnameRequired}}
-      <span id="accountFullNameStepIndicator"></span>
-      {{/if}}
-      <span id="accountEmailStepIndicator"></span>
+      <span id="accountEmailStepIndicator" class="active"></span>
       {{#if passwordRequired}}
       <span id="accountPasswordStepIndicator"></span>
       {{/if}}
       {{#if requireInviteCode}}
       <span id="accountInvitationCodeStepIndicator"></span>
+      {{/if}}
+      <span id="accountUsernameStepIndicator"></span>
+      {{#if fullnameRequired}}
+      <span id="accountFullNameStepIndicator"></span>
       {{/if}}
     </div>
     <div class="disclaimer">{{html-safe disclaimerHtml}}</div>

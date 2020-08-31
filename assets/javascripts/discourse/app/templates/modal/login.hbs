@@ -69,6 +69,12 @@
           {{conditional-loading-spinner condition=showSpinner}}
         </div>
       </form>
+      {{d-button
+        id="orEmail"
+            class="no-style"
+            action=(action "switchToMail")
+            label="login.unikname.orEmail"
+          }}
       </div>
     {{/if}}
 
