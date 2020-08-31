@@ -187,6 +187,10 @@ function initializeUnikname(api) {
         // Put Unikname on top
         return a.isUnikname ? -1 : 1;
       });
+    },
+    @discourseComputed("buttons")
+    showSeparator(buttons) {
+      return buttons.length > 1;
     }
   });
 }
