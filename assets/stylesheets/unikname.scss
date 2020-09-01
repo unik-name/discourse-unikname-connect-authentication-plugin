@@ -56,8 +56,11 @@ $provider_name: "unikname";
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding: 1em !important;
+        padding: 1em;
         min-height: 0px;
+        width: auto;
+        margin-left: 0px;
+        border: none;
 
         .oidc-before {
           margin-bottom: 1em;
@@ -65,10 +68,17 @@ $provider_name: "unikname";
           padding: 0 1em;
         }
 
-        .btn.btn-social.#{$provider_name} {
-          margin-top: 0px !important;
-          background-color: #0F2852;
-          color: #FFFFFF;
+        .btn.btn-social {
+          max-width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          &.#{$provider_name} {
+
+            margin-top: 0px !important;
+            background-color: #0F2852;
+            color: #FFFFFF;
+          }
         }
 
         .oidc-after {
@@ -318,6 +328,10 @@ $provider_name: "unikname";
   &:hover {
     background-color: transparent !important;
   }
+}
+
+.mobile-view .d-modal.fixed-modal.create-account .modal-body .login-buttons-with-email {
+  flex-direction: column;
 }
 
 @media screen and (min-width: 600px) {
