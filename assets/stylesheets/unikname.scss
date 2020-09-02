@@ -82,10 +82,11 @@ $provider_name: "unikname";
 
         .oidc-after {
           text-align: center;
-          padding: 0 1em;
+          padding: 0.5em 1em 0 1em;
           a.unikname-link {
             color: inherit;
             text-decoration: underline;
+            display: block;
           }
         }
         button:first-of-type {
