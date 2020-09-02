@@ -88,7 +88,10 @@
           {{d-icon 'envelope'}}
         </div>
         <p>
-          {{i18n "login.unikname.create_account.steps.email.description"}}
+          {{#if emailProcess }}
+            {{i18n "login.unikname.create_account.steps.email.description_1"}}
+          {{/if}}
+          {{i18n "login.unikname.create_account.steps.email.description_2"}}
         </p>
         <div class="input-section">
           <label for="new-account-email">{{i18n "user.email.title"}}</label>

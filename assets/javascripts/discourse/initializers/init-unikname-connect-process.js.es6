@@ -132,6 +132,10 @@ function initializeBetterAuthUX(api) {
     showOncreateAfterLogin(hasAuthOptions) {
       return hasAuthOptions ? 'forceDisplay' : '';
     },
+    @discourseComputed("hasAuthOptions")
+    emailProcess(hasAuthOptions) {
+      return !hasAuthOptions;
+    },
     @observes("usernameValidation", "passwordValidation")
     changeNextButtonState: function() {
       $(".next-btn").prop("disabled", !this.steps[this.activeStep].canGoNextStep(this));

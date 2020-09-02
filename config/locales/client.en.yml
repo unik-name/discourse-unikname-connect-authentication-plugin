@@ -25,7 +25,8 @@ en:
               description: "Full name is optional, you can fill it to display your public name."
             email:
               title: "Enter your email"
-              description: "Your email will be your account id. It will be also used to receive messages from other members and to receive your activity summary."
+              description_1: "Your email will be your account id."
+              description_2: "It will be used to receive messages from other members and to receive your activity summary."
               bypass_email:
                 label: "No email at all"
                 instructions: "For a better experience on this forum we recommend to subscribe with an email. You will be able to adjust email settings in your Preferences."
@@ -36,7 +37,7 @@ en:
               title: "Enter your invitation code"
               description: ""
         orEmail: "or connect with your eMail"
-      awaiting_activation: "You have to confirm your email to access to your account. Check your email box or wait 24h for your account deletion and try again."
+      awaiting_activation: "You have to confirm your email to access to your account. Check your email box or wait for your account deletion (contact admin to know about the delay) and try again."
     user:
       username:
         title: "Forum username"
