@@ -73,10 +73,9 @@ $provider_name: "unikname";
           display: flex;
           align-items: center;
           justify-content: flex-start;
-          &.#{$provider_name} {
 
+          &.#{$provider_name} {
             margin-top: 0px !important;
-            background-color: #0F2852;
             color: #FFFFFF;
           }
         }
@@ -116,7 +115,7 @@ $provider_name: "unikname";
           width: 20px;
           height: 20px;
         }
-        &.login-with-email-button {
+        &.login-email {
           display: none;
         }
         &#login-button {
@@ -154,9 +153,6 @@ $provider_name: "unikname";
             #credentials {
               padding: 0px;
             }
-          }
-          #orEmail {
-            color: $tertiary;
           }
         }
 
@@ -295,27 +291,29 @@ $provider_name: "unikname";
         max-height: none;
       }
     }
-    .login-buttons-with-email {
-      display: flex;
-      flex-direction: column-reverse;
-      .login-email {
-        padding: 0 1em;
-        button {
-          padding: 0.5em 1em;
-          display: flex;
-          flex-direction: row;
-          align-items: center;
-          border-radius: 5px;
-          width: 100%;
-          background-color: $tertiary;
-          color: $secondary;
-          svg {
-            height: 20px;
-          }
+
+  }
+  .login-buttons-with-email {
+    display: flex;
+    flex-direction: column-reverse;
+    .login-email {
+      padding: 0 1em;
+      button {
+        padding: 0.5em 1em;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        border-radius: 5px;
+        width: 100%;
+        // background-color: $tertiary;
+        // color: $secondary;
+        svg {
+          height: 20px;
         }
       }
     }
   }
+
   .loading-container {
     position: fixed;
     top: calc(50% - 2em);

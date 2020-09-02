@@ -167,7 +167,7 @@ function initializeBetterAuthUX(api) {
     actions: {
       switchToMail() {
         $(".d-modal.login-modal .login-modal #login-form").css("display", "block");
-        $(".d-modal.login-modal .login-modal #orEmail").css("display", "none");
+        $(".d-modal.login-modal .login-modal .login-email").css("display", "none");
         $(".d-modal.login-modal .login-modal #login-buttons").css("display", "none");
       }
     },

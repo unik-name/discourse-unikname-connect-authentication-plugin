@@ -36,7 +36,6 @@ en:
             invitation_code:
               title: "Enter your invitation code"
               description: ""
-        orEmail: "or connect with your eMail"
       awaiting_activation: "You have to confirm your email to access to your account. Check your email box or wait for your account deletion (contact admin to know about the delay) and try again."
     user:
       username:

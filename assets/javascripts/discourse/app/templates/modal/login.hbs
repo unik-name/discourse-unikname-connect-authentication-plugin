@@ -11,6 +11,9 @@
     {{#if canLoginLocal}}
 
       <div class="login-form-container">
+        <div class="login-buttons-with-email">
+
+
       <form id="login-form" method="post">
         <div id="credentials" class={{credentialsClass}}>
           <table>
@@ -69,12 +72,19 @@
           {{conditional-loading-spinner condition=showSpinner}}
         </div>
       </form>
+      <div class="login-email">
+
+      <div class="login-or">OR</div>
+
       {{d-button
         id="orEmail"
-            class="no-style"
+            class="login-with-email-button btn"
+            icon="far-envelope"
             action=(action "switchToMail")
-            label="login.unikname.orEmail"
+            label="email_login.button_label"
           }}
+      </div>
+      </div>
       </div>
     {{/if}}
 
