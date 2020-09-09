@@ -164,6 +164,10 @@ function initializeBetterAuthUX(api) {
   });
 
   api.modifyClass("controller:login", {
+    @discourseComputed("loggingIn", "application.canSignUp")
+    showSignupLink(loggingIn, canSignUp) {
+      return canSignUp;
+    },
     actions: {
       switchToMail() {
         $(".d-modal.login-modal .login-modal #login-form").css("display", "block");
