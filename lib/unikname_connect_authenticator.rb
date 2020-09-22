@@ -26,6 +26,10 @@ class UniknameConnectAuthenticator < Auth::ManagedAuthenticator
     SiteSetting.unikname_connect_overrides_email
   end
 
+  def description_for_auth_hash(auth_token)
+    return
+  end
+
   def register_middleware(omniauth)
 
     omniauth.provider :unikname,

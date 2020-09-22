@@ -82,18 +82,26 @@
 
       <div class="create-account-step" id="accountEmailStep">
         <h2>
-          {{i18n "login.unikname.create_account.steps.email.title"}}
+          {{#if isUniknameAuth }}
+            {{i18n "login.unikname.create_account.steps.email.title_unikname"}}
+          {{else}}
+            {{i18n "login.unikname.create_account.steps.email.title"}}
+          {{/if}}
         </h2>
         <div class="create-account-step-icon">
           {{d-icon 'envelope'}}
         </div>
         <p>
-          {{#if emailProcess }}
-            {{i18n "login.unikname.create_account.steps.email.description_1"}}
+          {{#if isUniknameAuth }}
+            {{i18n "login.unikname.create_account.steps.email.change_email"}}
+          {{else}}
+            {{#if emailProcess }}
+              {{i18n "login.unikname.create_account.steps.email.description_1"}}
+            {{/if}}
+            {{i18n "login.unikname.create_account.steps.email.description_2"}}
           {{/if}}
-          {{i18n "login.unikname.create_account.steps.email.description_2"}}
         </p>
-        <div class="input-section">
+        <div class="input-section" style="{{ if isUniknameAuth 'display:none;' '' }}">
           <label for="new-account-email">{{i18n "user.email.title"}}</label>
           {{#if emailValidated}}
           <span class="value">{{accountEmail}}</span>
@@ -212,7 +220,7 @@
   <div class="buttons">
 
     {{#d-button class="btn-large btn-primary back-btn" action=(action "prev")}}
-    Back
+      {{i18n "login.unikname.create_account.steps.buttons.back"}}
     {{/d-button}}
 
     {{d-button
@@ -224,22 +232,22 @@
           }}
 
     {{#d-button class="btn-large btn-primary next-btn" disabled="disabled" action=(action "next")}}
-    Next!
+      {{i18n "login.unikname.create_account.steps.buttons.next"}}
     {{/d-button}}
   </div>
 
   <div class="sub-footer">
     <div id="step-indicators">
-      <span id="accountEmailStepIndicator" class="active"></span>
+      <span id="accountUsernameStepIndicator" class="active"></span>
+      {{#if fullnameRequired}}
+      <span id="accountFullNameStepIndicator"></span>
+      {{/if}}
+      <span id="accountEmailStepIndicator"></span>
       {{#if passwordRequired}}
       <span id="accountPasswordStepIndicator"></span>
       {{/if}}
       {{#if requireInviteCode}}
       <span id="accountInvitationCodeStepIndicator"></span>
-      {{/if}}
-      <span id="accountUsernameStepIndicator"></span>
-      {{#if fullnameRequired}}
-      <span id="accountFullNameStepIndicator"></span>
       {{/if}}
     </div>
     <div class="disclaimer">{{html-safe disclaimerHtml}}</div>

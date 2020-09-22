@@ -151,10 +151,11 @@ module ::OmniAuth
         data_source = options.use_userinfo ? userinfo_response : id_token_info
         prune!(
           name: data_source['name'],
-          email: data_source['email'],
+          email: "change-it-if-you-want-email-notifications-#{data_source['sub']}@unikname-respects-your-privacy.invalid",
+          email_verified: true,
           first_name: data_source['given_name'],
           last_name: data_source['family_name'],
-          nickname: data_source['preferred_username'],
+          nickname: data_source['preferred_username'] ? data_source['preferred_username'] : "Change-Me_Unikname-#{data_source['sub']}",
           picture: data_source['picture']
         )
       end
