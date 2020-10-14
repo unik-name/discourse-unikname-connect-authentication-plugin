@@ -43,7 +43,7 @@ Before to [report en issue in github](https://github.com/unik-name/discourse-uni
 
 ## Quick links and documentation
 
-:link: [Code on github](https://github.com/unik-name/discourse-unikname)
+:link: [Code on github](https://github.com/unik-name/discourse-unikname-connect-authentication-plugin)
 
 :link: [Unikname Help Center](https://docs.unikname.com/)
 
