@@ -1,9 +1,9 @@
 en:
   site_settings:
-    unikname_connect_enabled: Enable Unikname Connect authentication, requires unikname_connect_unikname_key and unikname_connect_secret. See <a href='https://docs.unikname.com/3-unikname-connect/integration-technology/discourse/' target='_blank'>How to integrate Unikname Connect with Discourse?</a>.
+    unikname_connect_enabled: Enable Unikname Connect authentication, requires unikname_connect_business_account_id and unikname_connect_api_secret_key. See <a href='https://docs.unikname.com/3-unikname-connect/integration-technology/discourse/' target='_blank'>How to integrate Unikname Connect with Discourse?</a>.
     unikname_connect_discovery_document: Unikname Connect discovery document URL.
-    unikname_connect_unikname_key: Your organization's @unikname key for Unikname Connect authentication. See <a href='https://docs.unikname.com/3-unikname-connect/integration-technology/discourse/' target='_blank'>How to integrate Unikname Connect with Discourse?</a>
-    unikname_connect_secret: Secret key for Unikname Connect authentication, registered at <a href='https://docs.unikname.com/3-unikname-connect/integration-technology/discourse/' target='_blank'>How to integrate Unikname Connect with Discourse?</a>
+    unikname_connect_business_account_id: Your organization's Business Account ID for Unikname Connect authentication. See <a href='https://docs.unikname.com/3-unikname-connect/integration-technology/discourse/' target='_blank'>How to integrate Unikname Connect with Discourse?</a>
+    unikname_connect_api_secret_key: API Secret Key for Unikname Connect authentication, See <a href='https://docs.unikname.com/3-unikname-connect/integration-technology/discourse/' target='_blank'>How to integrate Unikname Connect with Discourse?</a>
     unikname_connect_authorize_scope: "The scopes claimed to your users when using Unikname Connect. This must include 'openid'."
     unikname_connect_token_scope: "The scopes sent when requesting the token endpoint. The official specification does not require this."
     unikname_connect_error_redirects: "If the callback error_reason contains the first parameter, the user will be redirected to the URL in the second parameter"

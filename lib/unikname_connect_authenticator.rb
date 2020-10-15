@@ -54,8 +54,8 @@ class UniknameConnectAuthenticator < Auth::ManagedAuthenticator
         token_params[:scope] = SiteSetting.unikname_connect_token_scope if SiteSetting.unikname_connect_token_scope.present?
 
         opts.deep_merge!(
-          client_id: SiteSetting.unikname_connect_unikname_key,
-          client_secret: SiteSetting.unikname_connect_secret,
+          client_id: SiteSetting.unikname_connect_business_account_id,
+          client_secret: SiteSetting.unikname_connect_api_secret_key,
           client_options: {
             discovery_document: SiteSetting.unikname_connect_discovery_document,
           },

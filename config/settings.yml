@@ -4,9 +4,9 @@ plugins:
     client: true
   unikname_connect_discovery_document:
     default: "https://connect.unikname.com/oidc/.well-known/openid-configuration"
-  unikname_connect_unikname_key:
+  unikname_connect_business_account_id:
     default: ""
-  unikname_connect_secret:
+  unikname_connect_api_secret_key:
     default: ""
   unikname_connect_allow_association_change:
     default: false
