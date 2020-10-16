@@ -36,7 +36,7 @@ class UniknameConnectAuthenticator < Auth::ManagedAuthenticator
       name: :unikname,
       cache: lambda { |key, &blk| Rails.cache.fetch(key, expires_in: 10.minutes, &blk) },
       error_handler: lambda { |error, message|
-        handlers = SiteSetting.unikname_connect_error_redirects.split("\n")
+        handlers = []
         handlers.each do |row|
           parts = row.split("|")
           return parts[1] if message.include? parts[0]
@@ -51,17 +51,17 @@ class UniknameConnectAuthenticator < Auth::ManagedAuthenticator
         opts = env['omniauth.strategy'].options
 
         token_params = {}
-        token_params[:scope] = SiteSetting.unikname_connect_token_scope if SiteSetting.unikname_connect_token_scope.present?
+        token_params[:scope] = "openid"
 
         opts.deep_merge!(
-          client_id: SiteSetting.unikname_connect_unikname_key,
-          client_secret: SiteSetting.unikname_connect_secret,
+          client_id: SiteSetting.unikname_connect_business_account_id,
+          client_secret: SiteSetting.unikname_connect_api_secret_key,
           client_options: {
-            discovery_document: SiteSetting.unikname_connect_discovery_document,
+            discovery_document: "https://connect.unikname.com/oidc/.well-known/openid-configuration",
           },
-          scope: SiteSetting.unikname_connect_authorize_scope,
+          scope: "openid",
           token_params: token_params,
-          passthrough_authorize_options: SiteSetting.unikname_connect_authorize_parameters.split("|"),
+          passthrough_authorize_options: [],
           )
       }
   end
