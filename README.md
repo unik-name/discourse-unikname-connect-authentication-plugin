@@ -39,7 +39,7 @@ Unikname is member of the W3C and the DIF (Decentralized Identity Foundation) an
 
 ## Support / Reporting an Issue
 
-Before to [report en issue in github](./issues) you're welcome to [open a discussion with the support on our Forum](https://forum.unikname.com/c/support/15) (a Discourse one ;-) 
+Before to [report an issue in github](../../issues) you're welcome to [open a discussion with the support on our Forum](https://forum.unikname.com/c/support/15) (a Discourse one ;-) 
 
 ## Quick links and documentation
 
