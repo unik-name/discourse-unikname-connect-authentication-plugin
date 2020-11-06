@@ -13,10 +13,6 @@ en:
               dont_have_one: "If you don't have your @unikname yet, "
               link_name: get one now for free
           steps:
-            presentation:
-              title: "Welcome to this forum"
-              description1: "Your account has been created."
-              description2: "It's time now to set it up!"
             username:
               title: "How do you want to appear on this forum?"
               description: "Your username will be seen publicly by other forum members and visitors."
@@ -29,9 +25,6 @@ en:
               change_email: "If you want to receive eMail messages from other members or your activity summary, go to eMail settings in your profile after sign-up and change your contact eMail."
               description_1: "Your email will be your account id."
               description_2: "It will be used to receive messages from other members and to receive your activity summary."
-              bypass_email:
-                label: "No email at all"
-                instructions: "For a better experience on this forum we recommend to subscribe with an email. You will be able to adjust email settings in your Preferences."
             password:
               title: "Enter your password"
               description: "A password is required, please choose one."
@@ -39,7 +32,7 @@ en:
               title: "Enter your invitation code"
               description: ""
             buttons:
-              next: "Next!"
+              next: "Next"
               back: "Back"
       awaiting_activation: "You have to confirm your email to access to your account. Check your email box or wait for your account deletion (contact admin to know about the delay) and try again."
     user:
@@ -47,5 +40,3 @@ en:
         title: "Forum username"
       email:
         validity_instructions: "Your email has to be valid. It will be verified."
-
-

@@ -1,0 +1,42 @@
+fr:
+  js:
+    login:
+      unikname:
+        name: "Unikname Connect"
+        title: "via votre @unikname"
+        message: "Connexion avec Unikname Connect"
+        create_account:
+          login_link: "Vous avez déjà un compte ?"
+          unikname_connect_button:
+            description: "Nous vous recommandons l'authentification nouvelle génération : simple, sécurisée, confidentielle"
+            caption:
+              dont_have_one: "Si vous n'avez pas encore votre @unikname, "
+              link_name: obtenez-le gratuitement
+          steps:
+            username:
+              title: "Comment voulez-vous apparaître sur ce forum ?"
+              description: "Votre nom d'utilisateur sera affiché publiquement pour tous les autres membres et les visiteurs."
+            fullname:
+              title: "Nom complet"
+              description: "Le nom complet est optionnel, vous pouvez le renseigner pour afficher votre nom public."
+            email:
+              title: "Renseignez votre email"
+              title_unikname: "L'email est optionnel !"
+              change_email: "Si vous souhaitez recevoir des emails provenant d'autres membres ou votre résumé d'activité, modifiez votre email de contact dans les préférences de votre compte à la fin de sa création."
+              description_1: "Votre email correspondra à votre identifiant de compte."
+              description_2: "Il sera utilisé pour recevoir des emails provenant d'autres membres ainsi que votre résumé d'activité."
+            password:
+              title: "Renseignez votre mot de passe"
+              description: "Un mot de passe est requis, merci d'en choisir un."
+            invitation_code:
+              title: "Renseignez votre code d'invitation"
+              description: ""
+            buttons:
+              next: "Suivant"
+              back: "Retour"
+      awaiting_activation: "Vous devez confirmer votre email pour accéder à votre compte. Vérifiez vos emails ou attendez la suppression de votre compte (contactez l'administrateur pour connaître le délai) et réessayez."
+    user:
+      username:
+        title: "Nom d'utilisateur sur le forum"
+      email:
+        validity_instructions: "Votre email doit être valide. Il sera vérifié."
