@@ -178,7 +178,7 @@
       </div>
 
       {{#if requireInviteCode}}
-      <div class="create-account-step" id="accountInvitationCodeCodeStep">
+      <div class="create-account-step" id="accountInvitationCodeStep">
         <h2>
           {{i18n "login.unikname.create_account.steps.invitation_code.title"}}
         </h2>
@@ -195,15 +195,25 @@
         </div>
       </div>
       {{/if}}
+
+      {{#if userFields}}
+      <div class="create-account-step" id="accountAdditionalInformationsStep">
+        <h2>
+          {{i18n "login.unikname.create_account.steps.additional_informations.title"}}
+        </h2>
+        <div class="create-account-step-icon">
+          {{d-icon 'stream'}}
+        </div>
+        <div class="user-fields input-section">
+          {{#each userFields as |f|}}
+            {{user-field field=f.field value=f.value}}
+          {{/each}}
+        </div>
+      </div>
+      {{/if}}
     </div>
 
-    {{#if userFields}}
-    <div class="user-fields">
-      {{#each userFields as |f|}}
-      {{user-field field=f.field value=f.value}}
-      {{/each}}
-    </div>
-    {{/if}}
+
   </form>
 </div>
 {{/d-modal-body}}
@@ -248,6 +258,9 @@
       {{/if}}
       {{#if requireInviteCode}}
       <span id="accountInvitationCodeStepIndicator"></span>
+      {{/if}}
+      {{#if userFields}}
+      <span id="accountAdditionalInformationsStepIndicator"></span>
       {{/if}}
     </div>
     <div class="disclaimer">{{html-safe disclaimerHtml}}</div>

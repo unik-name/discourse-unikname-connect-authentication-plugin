@@ -40,10 +40,13 @@ function initializeBetterAuthUX(api) {
           if (that.requireInviteCode) {
             return "accountInvitationCodeStep";
           }
+          if (that.userFields) {
+            return "accountAdditionalInformationsStep";
+          }
           return "finalStep"
         },
         isLastStep: (that) => {
-          return !that.passwordRequired && !that.requireInviteCode;
+          return !that.passwordRequired && !that.requireInviteCode && that.userFields.length === 0;
         },
         canGoNextStep: (that) => {
           return that.get("emailValidation.ok");
@@ -56,10 +59,13 @@ function initializeBetterAuthUX(api) {
           if (that.requireInviteCode) {
             return "accountInvitationCodeStep"
           }
+          if (that.userFields) {
+            return "accountAdditionalInformationsStep";
+          }
           return "finalStep";
         },
         isLastStep: (that) => {
-          return !that.requireInviteCode;
+          return !that.requireInviteCode && that.userFields.length === 0;
         },
         canGoNextStep: (that) => {
           return that.passwordRequired ? !!that.get("passwordValidation.ok") : true;
@@ -71,12 +77,29 @@ function initializeBetterAuthUX(api) {
           if (that.passwordRequired) {
             return "accountPasswordStep";
           }
+          if (that.userFields) {
+            return "accountAdditionalInformationsStep";
+          }
           return "accountEmailStep";
+        },
+        isLastStep: (that) => {
+          return !that.userFields;
         },
         next: (that) => "finalStep",
         canGoNextStep: (that) => {
           return that.requireInviteCode ? that.inviteCode : true;
         }
+      },
+      accountAdditionalInformationsStep: {
+        id: "accountAdditionalInformationsStep",
+        prev: (that) => {
+          if (that.passwordRequired) {
+            return "accountPasswordStep";
+          }
+          return "accountEmailStep";
+        },
+        isLastStep: (that) => true,
+
       },
       finalStep: {
         prev: "accountEmailStep"
