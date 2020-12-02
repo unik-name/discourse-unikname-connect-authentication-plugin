@@ -31,6 +31,8 @@ en:
             invitation_code:
               title: "Enter your invitation code"
               description: ""
+            additional_informations:
+              title: "Additional Informations"
             buttons:
               next: "Next"
               back: "Back"

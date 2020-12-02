@@ -31,6 +31,8 @@ fr:
             invitation_code:
               title: "Renseignez votre code d'invitation"
               description: ""
+            additional_informations:
+              title: "Informations supplémentaires"
             buttons:
               next: "Suivant"
               back: "Retour"

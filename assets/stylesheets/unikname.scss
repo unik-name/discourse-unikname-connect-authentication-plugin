@@ -44,11 +44,13 @@ $provider_name: "unikname";
       flex-direction: column-reverse;
       align-items: normal;
 
-      input {
-        width: 100%;
+      input, .select-kit {
         border-radius: 5px;
         line-height: 2em;
-        margin-top: 0.5em;
+        &:not([type='checkbox']) {
+          margin-top: 0.5em;
+          width: 100%;
+        }
       }
 
       #login-buttons {
@@ -192,17 +194,22 @@ $provider_name: "unikname";
               width: 100%;
               margin-top: 1em;
 
-              input {
-                width: 100%;
+              input, .select-kit {
                 border-radius: 5px;
                 line-height: 2em;
-                margin-top: 0.5em;
+                &:not([type='checkbox']) {
+                  margin-top: 0.5em;
+                  width: 100%;
+                }
               }
 
               .instructions label {
                 font-style: italic;
                 opacity: 0.6;
               }
+            }
+            .user-fields {
+              width: 100%;
             }
           }
         }
