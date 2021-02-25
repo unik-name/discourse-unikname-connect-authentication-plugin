@@ -1,7 +1,7 @@
 $provider_name: "unikname";
 
-.d-modal.fixed-modal.login-modal,
-.d-modal.fixed-modal.create-account {
+#discourse-modal.d-modal.fixed-modal.login-modal,
+#discourse-modal.d-modal.fixed-modal.create-account {
   flex-direction: column-reverse;
 
   .modal-inner-container {
@@ -12,6 +12,9 @@ $provider_name: "unikname";
     // MODAL HEADER
     .modal-header {
       text-align: center;
+      top: 0;
+      right: 0;
+      padding: 1em;
       .title {
         width: 100%;
       }
@@ -44,12 +47,39 @@ $provider_name: "unikname";
       flex-direction: column-reverse;
       align-items: normal;
 
-      input, .select-kit {
+      input,
+      .select-kit {
         border-radius: 5px;
         line-height: 2em;
-        &:not([type='checkbox']) {
+        &:not([type="checkbox"]) {
           margin-top: 0.5em;
           width: 100%;
+        }
+        &:focus {
+          outline: none;
+        }
+      }
+
+      .btn.btn-social,
+      .login-with-email-button {
+        max-width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        background-color: $primary-low;
+
+        &:hover {
+          outline: none;
+        }
+
+        &.#{$provider_name} {
+          background: $tertiary;
+          margin-top: 0px !important;
+          color: #ffffff;
+          &:hover {
+            background: $tertiary-high !important;
+            color: #ffffff !important;
+          }
         }
       }
 
@@ -68,18 +98,6 @@ $provider_name: "unikname";
           margin-bottom: 1em;
           text-align: center;
           padding: 0 1em;
-        }
-
-        .btn.btn-social {
-          max-width: 100%;
-          display: flex;
-          align-items: center;
-          justify-content: flex-start;
-
-          &.#{$provider_name} {
-            margin-top: 0px !important;
-            color: #FFFFFF;
-          }
         }
 
         .oidc-after {
@@ -194,10 +212,11 @@ $provider_name: "unikname";
               width: 100%;
               margin-top: 1em;
 
-              input, .select-kit {
+              input,
+              .select-kit {
                 border-radius: 5px;
                 line-height: 2em;
-                &:not([type='checkbox']) {
+                &:not([type="checkbox"]) {
                   margin-top: 0.5em;
                   width: 100%;
                 }
@@ -286,6 +305,13 @@ $provider_name: "unikname";
     }
   }
 
+  .has-alt-auth {
+    min-width: 0;
+    padding-top: 1em !important;
+    padding-bottom: 1em !important;
+    background-color: $secondary;
+  }
+
   &.create-account {
     .login-form {
       &:after {
@@ -300,7 +326,6 @@ $provider_name: "unikname";
         max-height: none;
       }
     }
-
   }
   .login-buttons-with-email {
     display: flex;
@@ -321,6 +346,20 @@ $provider_name: "unikname";
         }
       }
     }
+
+    #login-form table {
+      width: 100%;
+      margin-bottom: 1em;
+      tbody {
+        border: none;
+        tr {
+          border-bottom: none;
+          td {
+            display: block;
+          }
+        }
+      }
+    }
   }
 
   .loading-container {
@@ -337,13 +376,16 @@ $provider_name: "unikname";
   }
 }
 
-.mobile-view .d-modal.fixed-modal.create-account .modal-body .login-buttons-with-email {
+.mobile-view
+  .d-modal.fixed-modal.create-account
+  .modal-body
+  .login-buttons-with-email {
   flex-direction: column;
 }
 
 @media screen and (min-width: 600px) {
-  .d-modal.fixed-modal.login-modal,
-  .d-modal.fixed-modal.create-account {
+  #discourse-modal.d-modal.fixed-modal.login-modal,
+  #discourse-modal.d-modal.fixed-modal.create-account {
     .modal-inner-container {
       width: 450px;
     }
@@ -351,7 +393,7 @@ $provider_name: "unikname";
 }
 
 @media screen and (max-height: 650px) {
-  .d-modal.create-account .login-form form {
+  #discourse-modal.d-modal.create-account .login-form form {
     max-height: inherit;
   }
 }
