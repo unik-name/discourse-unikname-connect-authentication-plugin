@@ -162,7 +162,7 @@ $provider_name: "unikname";
         }
       }
 
-      &.login-modal {
+      &.login-modal-body {
         max-height: inherit !important;
 
         .login-form-container {
@@ -185,7 +185,7 @@ $provider_name: "unikname";
       }
     }
 
-    .create-account {
+    .create-account-body {
       .modal-body {
         .create-account-steps {
           .create-account-step {
@@ -312,8 +312,9 @@ $provider_name: "unikname";
     background-color: $secondary;
   }
 
-  &.create-account {
+  .create-account-body {
     .login-form {
+      padding: 1em;
       &:after {
         background-image: none;
       }
@@ -388,6 +389,10 @@ $provider_name: "unikname";
   #discourse-modal.d-modal.fixed-modal.create-account {
     .modal-inner-container {
       width: 450px;
+      .create-account-body {
+        width: 450px !important;
+        min-width: 450px !important;
+      }
     }
   }
 }
