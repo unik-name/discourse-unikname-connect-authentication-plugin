@@ -31,12 +31,12 @@ $provider_name: "unikname";
         border: none;
         &:hover {
           .d-icon {
-            color: $tertiary;
+            color: var(--tertiary);
           }
         }
         .d-icon {
           &:hover {
-            color: $tertiary;
+            color: var(--tertiary);
           }
         }
       }
@@ -66,18 +66,18 @@ $provider_name: "unikname";
         display: flex;
         align-items: center;
         justify-content: flex-start;
-        background-color: $primary-low;
+        background-color: var(--primary-low);
 
         &:hover {
           outline: none;
         }
 
         &.#{$provider_name} {
-          background: $tertiary;
+          background: var(--tertiary);
           margin-top: 0px !important;
           color: #ffffff;
           &:hover {
-            background: $tertiary-high !important;
+            background: var(--tertiary-high) !important;
             color: #ffffff !important;
           }
         }
@@ -124,7 +124,7 @@ $provider_name: "unikname";
           outline: none;
         }
         &.#{$provider_name} {
-          background-color: $tertiary;
+          background-color: var(--tertiary);
           .oidc-logo {
             margin-right: 0.45em;
           }
@@ -140,7 +140,7 @@ $provider_name: "unikname";
           display: none;
         }
         &#login-button {
-          background-color: $tertiary;
+          background-color: var(--tertiary);
         }
       }
 
@@ -158,7 +158,7 @@ $provider_name: "unikname";
           content: "";
           width: 4em;
           margin: 0 0.5em;
-          border-bottom: 2px solid $primary;
+          border-bottom: 2px solid var(--primary);
         }
       }
 
@@ -253,9 +253,9 @@ $provider_name: "unikname";
             height: 1em;
             margin: 0 0.5em;
             border-radius: 50%;
-            background-color: transparentize($tertiary, 0.9);
+            background-color: rgba(var(--tertiary-rgb), 0.9);
             &.active {
-              background-color: $tertiary;
+              background-color: var(--tertiary);
             }
           }
         }
@@ -270,8 +270,8 @@ $provider_name: "unikname";
             &.btn-primary {
               &,
               &:active {
-                background-color: $tertiary;
-                color: $secondary;
+                background-color: var(--tertiary);
+                color: var(--secondary);
               }
             }
             &.submit-btn {
@@ -309,7 +309,7 @@ $provider_name: "unikname";
     min-width: 0;
     padding-top: 1em !important;
     padding-bottom: 1em !important;
-    background-color: $secondary;
+    background-color: var(--secondary);
   }
 
   .create-account-body {
@@ -340,8 +340,8 @@ $provider_name: "unikname";
         align-items: center;
         border-radius: 5px;
         width: 100%;
-        // background-color: $tertiary;
-        // color: $secondary;
+        // background-color: var(--tertiary);
+        // color: var(--secondary);
         svg {
           height: 20px;
         }
